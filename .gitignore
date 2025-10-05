@@ -3,3 +3,7 @@
 
 # Ignore node modules:
 /web_app/web/node_modules/
+
+
+# Ignore pycache:
+/web_app/image_model/__pycache__
