@@ -1,2 +1,5 @@
 # Ignore data files:
 /data/
+
+# Ignore node modules:
+/web_app/web/node_modules/
