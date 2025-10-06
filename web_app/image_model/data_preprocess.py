@@ -6,14 +6,14 @@ def reshape_data(X, img_rows=28, img_cols=28):
     """ Reshape the input data to have a single channel (grayscale images)
     
     Parameters:
-    X (numpy array): Input data to be reshaped
+    X (tensor): Input data to be reshaped
     img_rows (int): Number of rows in the image
     img_cols (int): Number of columns in the image
     
     Returns:
     tensor: Reshaped data with shape (num_samples, 1, img_rows, img_cols)
     """
-    return torch.tensor(X.values.reshape(-1, 1, img_rows, img_cols).astype('float32') / 255.0)
+    return torch.tensor(X.reshape(-1, 1, img_rows, img_cols).astype('float32') / 255.0)
 
 def get_data_labels(y):
     """ Convert labels to tensor format

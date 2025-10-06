@@ -1,12 +1,17 @@
 import multer from "multer";
 import path from "path";
 import { spawn } from "child_process";
-
 import { Router } from "express";
 import { title } from "process";
-const router = Router();
+import { fileURLToPath } from "url";
 
+
+const router = Router();
 const upload = multer({ dest: 'images/' }); //Setting destination folder for storing the uploaded files
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const webDir = path.join(__dirname, '..'); //Getting the path to the web directory.
 
 router
 .route('/')
@@ -20,10 +25,10 @@ router
 .post(upload.single('image'), async (req, res) => {
 
     try {
-        const imgPath = path.join(__dirname, req.file.path);
+        const imgPath = path.join(webDir, req.file.path);
         const child_process = spawn('python', ['predict.py', imgPath]);
 
-        pred_result = '';
+        let pred_result;
 
         child_process.stdout.on('data', (data) => {
             pred_result = data;
@@ -32,8 +37,8 @@ router
         child_process.stderr.on('error', (err) => {
             console.error('Failed with: ' + err);
         });
-        child_process.on('exit', (data) => {
-            console.log('Python Script has exited!');
+        child_process.on('close', (data) => {
+            console.log('Python Script has closed with data: ' + data);
             res.json({ prediction: data });
         })
     } catch (error) {

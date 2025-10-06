@@ -7,3 +7,6 @@
 
 # Ignore pycache:
 /web_app/image_model/__pycache__
+
+# Ignore temp image files:
+/web_app/web/images

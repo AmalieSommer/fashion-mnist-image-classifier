@@ -14,6 +14,6 @@ def process_img(img_path):
         transforms.Normalize((0.5,),(0.5,))
     ])
 
-    img = Image.open(img_path)
+    img = Image.open(img_path).convert('L')
     img_tensor = process(img).unsqueeze(0)
     return img_tensor

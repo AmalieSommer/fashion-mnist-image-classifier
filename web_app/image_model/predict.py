@@ -8,18 +8,19 @@ import sys
 def predict(image, model=LeNet5()):
 
     device = get_device()
-    model.load_state_dict(torch.load("lenet5_final.pt", map_location=device)) # Load the pre-trained model
+    model.load_state_dict(torch.load("web_app\image_model\lenet5_final.pt", map_location=device, weights_only=True)) # Load the pre-trained model
     model.to(device)
 
     # Load the img:
-    img_transformed = process_img(image)
-    image_tensor = reshape_data(img_transformed).to(device)
+    img_transformed_tensor = process_img(image).to(device)
+    print(f'Dimensions of transformed image: {img_transformed_tensor.shape}')
+    #image_tensor = reshape_data(img_transformed).to(device)
 
     prediction = None
 
     with torch.no_grad():  # Disable gradient calculation
         model.eval()  # Set the model to evaluation mode
-        output = model(image_tensor)
+        output = model(img_transformed_tensor)
         probabilities = F.softmax(output, dim=1)  # Apply softmax to get probabilities
         prediction = torch.argmax(probabilities, dim=1).item()  # Get the index of the max probability
 
