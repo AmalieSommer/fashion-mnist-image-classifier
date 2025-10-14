@@ -1,11 +1,21 @@
 <h1>Upload an image to classify</h1>
  <main>
     <p>This website will allow you to upload an image to a Machine Learning model, which will classify the type of clothing is in the image.</p>
-    <form action="/" method="POST" enctype="multipart/form-data">
+    <form id="fileUpload" enctype="multipart/form-data">
+        <div>
+            <img id="filePreview" src="#">
+        </div>
+        
         <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
         <label for="image">
             <p class="upload-click">Click to upload</p>
         </label>
         <button type="submit">Upload</button>
     </form>
+
+    <div id="divResult">
+        <p>The model predicted it to be:</p>
+        <br>
+        <p id="predCategory"></p>
+    </div>
  </main>

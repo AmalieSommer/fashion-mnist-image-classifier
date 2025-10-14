@@ -41,9 +41,7 @@ router
         child_process.on('close', (data) => {
             console.log('Python Script has closed with data: ' + data);
             const predCategory = getPredCategory(data);
-            res.render('dashboard', {
-                result: predCategory
-            });
+            res.json({ result: predCategory })
         })
     } catch (error) {
         console.error(error);
