@@ -4,6 +4,7 @@ import { spawn } from "child_process";
 import { Router } from "express";
 import { title } from "process";
 import { fileURLToPath } from "url";
+import { getPredCategory } from '../helpers.js';
 
 
 const router = Router();
@@ -39,7 +40,10 @@ router
         });
         child_process.on('close', (data) => {
             console.log('Python Script has closed with data: ' + data);
-            res.json({ prediction: data });
+            const predCategory = getPredCategory(data);
+            res.render('dashboard', {
+                result: predCategory
+            });
         })
     } catch (error) {
         console.error(error);
