@@ -4,38 +4,89 @@ input[type="file"] {
 
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-h1.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25%;
-
     font-weight: bolder;
     font-size: xx-large;
+    text-align: center;
 }
+
 
 p {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-label {
-  display: inline-block;
-  border-radius: 0.5rem;
-  padding-inline: 1.5rem;
-  padding-block: 1rem;
+.upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button-form {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button-form:hover {
+  background-color: #218838;
+}
+
+.label.file {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.label.file:hover {
+  background-color: #0056b3;
+}
+
+#fileUpload {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
   align-items: center;
-  cursor: pointer;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #e2e8f0;
+  gap: 1rem;
+}
+
+#filePreview {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  display: none; /* hidden until a file is chosen */
 }
 
 #divResult {
   display: none;
+  align-content: center;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  overflow-x: hidden;
+  top: 0;
+}
+
+.left {
+  left: 0;
+  background-color: #cfcfcf;
+}
+
+.right {
+  right: 0;
+  background-color: #a3a3a3;
 }

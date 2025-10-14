@@ -1,21 +1,37 @@
-<h1>Upload an image to classify</h1>
- <main>
-    <p>This website will allow you to upload an image to a Machine Learning model, which will classify the type of clothing is in the image.</p>
-    <form id="fileUpload" enctype="multipart/form-data">
-        <div>
-            <img id="filePreview" src="#">
-        </div>
+<div class="split left">
+    <h1>Upload an image</h1>
+    <main>
+        <p>This website will allow you to upload an image to a Machine Learning model, which will classify the type of clothing is in the image.</p>
         
-        <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
-        <label for="image">
-            <p class="upload-click">Click to upload</p>
-        </label>
-        <button type="submit">Upload</button>
-    </form>
+        <label class="label dropdown" for="ml-model-select">Please select the ML model to be used for classifying:</label>
+        <select name="ml-model-select" id="ml-model-select">
+            <option value="cnn" selected>Convolutional Neural Network</option>
+            <option value="lr">Logistic Regression</option>
+            <option value="d-trees">Decision Tree</option>
+        </select>
 
+        <div class="upload">
+            <form id="fileUpload" enctype="multipart/form-data">
+            <div>
+                <img id="filePreview" src="#" alt="pic">
+            </div>
+            
+            <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
+            <label class="label file" for="image">
+                <p class="upload-click">Click to upload</p>
+            </label>
+            <button class="button-form" type="submit">Submit</button>
+        </form>
+        </div>
+    </main>
+</div>
+
+<div class="split right">
+    <h1>Results Dashboard</h1>
     <div id="divResult">
-        <p>The model predicted it to be:</p>
+        <p>Result is:</p>
         <br>
         <p id="predCategory"></p>
     </div>
- </main>
+</div>
+

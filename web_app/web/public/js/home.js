@@ -9,6 +9,7 @@ $(document).ready(() => {
             let fileReader = new FileReader();
             fileReader.onload = e => {
                 $('#filePreview').attr("src", e.target.result);
+                $('#filePreview').show();
             };
             fileReader.readAsDataURL(img);
         }
@@ -18,12 +19,9 @@ $(document).ready(() => {
     //Handle file upload submissions:
     $('#fileUpload').on('submit', (event) => {
         event.preventDefault();
-        console.log('Submission form button clicked!');
 
         //Check if an image file has been uploaded:
         let file = $('#image')[0].files[0];
-
-        console.log('Read file: ', file);
 
         if(file) {
             console.log('A file has been uploaded successfully!');
@@ -34,7 +32,6 @@ $(document).ready(() => {
 
         //Send the uploaded image to the correct POST route using Ajax:
         const data = new FormData($('#fileUpload')[0]);
-        console.log('New formdata: ', data);
 
         $.ajax({
             url: '/',
