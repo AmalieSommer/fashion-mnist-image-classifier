@@ -2,12 +2,12 @@
     <h1>Upload an image</h1>
     <main>
         <p>This website will allow you to upload an image to a Machine Learning model, which will classify the type of clothing is in the image.</p>
-        
+        <br> <br>
         <label class="label dropdown" for="ml-model-select">Please select the ML model to be used for classifying:</label>
         <select name="ml-model-select" id="ml-model-select">
             <option value="cnn" selected>Convolutional Neural Network</option>
             <option value="lr">Logistic Regression</option>
-            <option value="d-trees">Decision Tree</option>
+            <option value="rf">Random Forest</option>
         </select>
 
         <div class="upload">
@@ -32,6 +32,8 @@
         <p>Result is:</p>
         <br>
         <p id="predCategory"></p>
+        <br>
+        <p id="modelSelection"></p>
     </div>
 </div>
 

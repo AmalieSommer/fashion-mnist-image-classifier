@@ -2,11 +2,16 @@
 /data/
 
 # Ignore node modules:
-/web_app/web/node_modules/
+/web_app/node_modules/
 
 
 # Ignore pycache:
 /web_app/image_model/__pycache__
+/model_scripts/__pycache__
 
 # Ignore temp image files:
-/web_app/web/images
+/web_app/images
+
+
+# Ignore large saved ml models:
+/model_scripts/saved_models

@@ -13,7 +13,7 @@ def reshape_data(X, img_rows=28, img_cols=28):
     Returns:
     tensor: Reshaped data with shape (num_samples, 1, img_rows, img_cols)
     """
-    return torch.tensor(X.reshape(-1, 1, img_rows, img_cols).astype('float32') / 255.0)
+    return torch.tensor(X.to_numpy().reshape(-1, 1, img_rows, img_cols).astype('float32') / 255.0)
 
 def get_data_labels(y):
     """ Convert labels to tensor format

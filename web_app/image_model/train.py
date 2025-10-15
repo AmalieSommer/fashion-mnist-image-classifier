@@ -1,8 +1,8 @@
 import torch
-from model import LeNet5
+from model_scripts.cnn_model import LeNet5
 from data_preprocess import reshape_data, get_data_labels, get_device
 from torch import nn, optim
-from utils import accuracy
+from model_scripts.utils import accuracy
 import numpy as np
 
 def train_model(X_train, y_train, X_val, y_val, num_epochs=20, batch_size=128, learning_rate=0.001):

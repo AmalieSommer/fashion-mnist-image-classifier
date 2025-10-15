@@ -32,6 +32,8 @@ $(document).ready(() => {
 
         //Send the uploaded image to the correct POST route using Ajax:
         const data = new FormData($('#fileUpload')[0]);
+        const selected_model = $('#ml-model-select').find(':selected').val();
+        data.append('model', selected_model); //Creates formdata with file and selected option attached.
 
         $.ajax({
             url: '/',
@@ -42,7 +44,11 @@ $(document).ready(() => {
             success: (res) => {
                 console.log('Upload success: ', res);
                 $('#predCategory').text(res.result);
+                $('#modelSelection').text(res.chosenModel);
                 $('#divResult').show();
+
+                $('#fileUpload')[0].reset();
+                $('#filePreview').hide();
             },
             error: (err) => {
                 console.error('Upload failed: ', err);

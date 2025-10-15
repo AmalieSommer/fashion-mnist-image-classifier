@@ -1,7 +1,8 @@
 //Helper functions...
 
-export const getPredCategory = (predNumber) => {
+export const getPredCategory = (predValue) => {
     let type;
+    let predNumber = Number(predValue);
 
     //Based on Fashion MNIST categories return the pred value type based on the predicted number:
     switch (predNumber) {
