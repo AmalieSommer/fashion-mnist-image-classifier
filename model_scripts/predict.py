@@ -35,7 +35,6 @@ def randForestPredict(model, image):
     predClassProb = model.predictClassProb(image)
 
     print(f'Prediction Probabilities: ', predClassProb, flush=True)
-    
     return predClass
 
 
@@ -53,7 +52,7 @@ if __name__ == "__main__":
     result = None
 
     if selected_model == 'cnn':
-        image_tensor = processImg(img_path)
+        image_tensor = processImg(img_path).to(getDevice())
         cnn_model = LeNet5()
         cnn_model.loadModel(getDevice())
         result = cnnPredict(cnn_model, image_tensor)

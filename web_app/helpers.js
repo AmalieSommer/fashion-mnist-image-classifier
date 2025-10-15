@@ -1,6 +1,7 @@
 //Helper functions...
 
 export const getPredCategory = (predValue) => {
+    console.log('In getPredCategory, predication value from py script is: ', predValue);
     let type;
     let predNumber = Number(predValue);
 
@@ -41,4 +42,16 @@ export const getPredCategory = (predValue) => {
             break;
     }
     return type;
-}
+};
+
+export const getModelType = (selected) => {
+    let modelChoice = String(selected);
+    if(modelChoice == 'cnn') {
+        return 'Convolutional Neural Network';
+    } else if(modelChoice == 'lr') {
+        return 'Multinomial Logistic Regression';
+    } else if(modelChoice == 'rf') {
+        return 'Random Forest';
+    }
+    return 'No model matched!';
+};

@@ -3,7 +3,7 @@ import path from "path";
 import { spawn } from "child_process";
 import { Router } from "express";
 import { fileURLToPath } from "url";
-import { getPredCategory } from '../helpers.js';
+import { getPredCategory, getModelType } from '../helpers.js';
 
 
 const router = Router();
@@ -48,14 +48,11 @@ router
         });
 
         child_process.on('close', (code) => {
-            //console.log('Python exited with code', code);
-            console.log('Python Script has closed with data: ' + pred_result);
-
             const predCategory = getPredCategory(pred_result.trim());
 
             res.json({ 
                 result: predCategory,
-                chosenModel: modelChoice
+                chosenModel: getModelType(modelChoice)
              })
         })
     } catch (error) {

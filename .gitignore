@@ -11,6 +11,7 @@
 
 # Ignore temp image files:
 /web_app/images
+/images
 
 
 # Ignore large saved ml models:
