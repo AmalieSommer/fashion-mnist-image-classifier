@@ -12,12 +12,9 @@ import sys
 def trainLogReg(X_train, y_train, X_val, y_val):
     
     model = CustomLogisticRegression()
-    #X_train_transformed = reduceScaleFeatures(X_train)
-    #X_val_transformed = reduceScaleFeatures(X_val)
 
     #Fit model onto training set:
     model.fit(X_train, y_train)
-    #X_val_transformed = model.pca.transform(model.scaler.transform(X_val))
 
     #Evaluate model performance:
     y_pred = model.predictClass(X_val)
@@ -30,12 +27,10 @@ def trainLogReg(X_train, y_train, X_val, y_val):
 
 def trainRandForest(X_train, y_train, X_val, y_val):
     model = CustomRandomForest()
-    X_train_transformed = reduceScaleFeatures(X_train)
-    X_val_transformed = reduceScaleFeatures(X_val)
 
-    model.fit(X_train_transformed, y_train)
+    model.fit(X_train, y_train)
 
-    y_pred = model.predictClass(X_val_transformed)
+    y_pred = model.predictClass(X_val)
     score = accuracy_score(y_val, y_pred)
     print(f'Random Forest Model Accuracy on test data: {score}, and in percentage: {score * 100:.2f}%')
 

@@ -34,8 +34,8 @@ def randForestPredict(model, image):
     predClass = model.predictClass(image)
     predClassProb = model.predictClassProb(image)
 
-    print(f'Prediction Probabilities: ', predClassProb, flush=True)
-    return predClass
+    result = predClass.max(axis=0)
+    return result
 
 
 if __name__ == "__main__":
